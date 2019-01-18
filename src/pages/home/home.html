@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> Profiles </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addEmployee()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-slides #mainSlides>
+        <div *ngFor="let emp of employees">
+          <div *ngIf="ingelogdId != emp.doc._id">
+            <ion-slide (click)="showDetails(emp)" id="{{emp.doc._id}}">
+              <div>
+                <div *ngIf="emp.doc._attachments">
+                  <img
+                    style="width:200px;height:200px;"
+                    src="http://localhost:5984/employees/{{
+                      emp.doc._id
+                    }}/pic.jpg"
+                  />
+                </div>
+                <h1>
+                  {{ emp.doc.firstName }} {{ emp.doc.lastName }},
+                  {{ emp.doc.age }} 
+                </h1>
+                <br />
+                <p>{{ emp.doc.bio }}</p>
+              </div>
+            </ion-slide>
+          </div>
+        </div>
+      </ion-slides>
+    </ion-item>
+  </ion-list>
+
+  <ion-buttons>
+    <button
+      (click)="like()"
+      float-right
+      ion-button
+      color="secondary"
+      icon-start
+    >
+      <ion-icon name="thumbs-up"> </ion-icon>
+      Like
+    </button>
+    <button
+      (click)="dislike()"
+      float-left
+      side="left"
+      ion-button
+      color="danger"
+      icon-end
+    >
+      Next
+      <ion-icon name="thumbs-down"> </ion-icon>
+    </button>
+  </ion-buttons>
+</ion-content>
+
+<ion-footer>
+  <button ion-button ion-button (click)="logout()" color="secondary">
+    Logout
+  </button>
+
+  <button ion-button (click)="readChat()">
+    <ion-icon name="chatbubbles"></ion-icon>
+  </button>
+</ion-footer>

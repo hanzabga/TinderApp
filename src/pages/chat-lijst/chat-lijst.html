@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar> <ion-title>Matches</ion-title> </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div *ngFor="let emp of final">
+      <ion-item *ngIf="ingelogdId != emp.doc._id" (click)="chatten()">
+        <ion-avatar item-left>
+          <img
+            style="width:80px;height:80px;"
+            src="http://localhost:5984/employees/{{ emp.doc._id }}/pic.jpg"
+          />
+        </ion-avatar>
+        {{ emp.doc.firstName }}
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

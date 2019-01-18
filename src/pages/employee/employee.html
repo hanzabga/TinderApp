@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile Details</ion-title>
+    <ion-buttons end *ngIf="canDelete">
+      <button ion-button (click)="delete()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>First Name</ion-label>
+      <ion-input
+        text-right
+        type="text"
+        [(ngModel)]="employee.firstName"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Last Name</ion-label>
+      <ion-input
+        text-right
+        type="text"
+        [(ngModel)]="employee.lastName"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Age</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="employee.age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select text-right type="text" [(ngModel)]="employee.sex">
+        <ion-option value="m">Male</ion-option>
+        <ion-option value="f">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>bio</ion-label>
+      <ion-textarea
+        rows="4"
+        text-right
+        type="text"
+        [(ngModel)]="employee.bio"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="addOrUpdate()">Add/Update Employee</button>
+  <button ion-button block (click)="takePhotograph()">Take Photograph</button>
+</ion-content>
